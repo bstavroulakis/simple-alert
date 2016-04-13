@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../simple-alert.html">
+  </head>
+  <body>
+
+  <test-fixture id="basic">
+    <template>
+      <simple-alert></simple-alert>
+    </template>
+  </test-fixture>
+  
+  <test-fixture id="autoShow">
+    <template>
+      <simple-alert autoshow></simple-alert>
+    </template>
+  </test-fixture>
+
+    <script>
+        suite('basic', function() {
+        
+            var alert;
+            test('alert message appearing', function() {
+                alert = fixture('basic');
+                alert.setMessage("Hello");
+                alert.showMessage();
+                console.log(alert.querySelector("toggle-animation").style.display);
+                assert.equal(alert.querySelector("toggle-animation").style.display, 'inline-block');
+            });
+
+        });
+      
+        suite('autoShow', function() {
+            var alert;
+            test('auto alert message appearing', function() {
+                alert = fixture('basic');
+                setTimeout(function(){
+                    assert.equal(alert.querySelector("toggle-animation").style.display, 'inline-block');
+                },200);
+            });
+        });
+        
+    </script>
+
+  </body>
+</html>
