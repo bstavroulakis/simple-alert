@@ -1,0 +1,134 @@
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="./toggle-animation.html">
+
+<!--
+`<simple-alert>` shows an alert on your page and device notification.
+
+To use, insert `<simple-alert>` in the body:
+
+    <body>
+      <simple-alert></simple-alert>
+
+Example:
+    <simple-alert autoshow message="Hello">
+    </simple-alert>
+    
+To show the message instantly.
+
+Example:
+    <simple-alert notify-device message="Hello">
+    </simple-alert>
+    
+To enable push notifications per device.
+
+### Styling
+The following custom properties and mixins are available for styling:
+Custom property | Description | Default
+----------------|-------------|----------
+`--dark-primary-color` | The background-color of the message | `#303F9F`
+`--text-primary-color` | The text color of the message | `#ffffff`
+
+### Fonts
+The following variable is applied for the font of the element
+`--paper-font-common-base`
+
+-->
+<dom-module id="simple-alert">
+    <template>
+        <style>
+            :host .simple-alert-wrapper{
+                position: fixed;
+                right: 10px;
+                top: 10px;
+                font-weight: 300;
+                width:280px;
+            }
+            :host toggle-animation .simple-alert-item{
+                background-color: var(--dark-primary-color, #303F9F);
+                color: var(--text-primary-color, #ffffff);
+                padding: 1em;
+                cursor: pointer;
+                width:250px;
+                border-radius: 5px;
+                @apply(--paper-font-common-base);
+            }
+        </style>
+        <div class="simple-alert-wrapper">
+            <toggle-animation on-click="hideMessage">
+                <div class="simple-alert-item">{{message}}</div>
+            </toggle-animation>
+        </div>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "simple-alert",
+        properties:{
+            /** The message of the alert. */
+            message: { 
+                type: String,
+                notify: true,
+                reflectToAttribute: true
+            },
+            /** If the alert will auto-play. */
+            autoshow:{
+                type: Boolean,
+                refrectToAttribute: true
+            },
+            /** To notify the device with push notifications. */
+            notifyDevice:{
+                type: Boolean,
+                refrectToAttribute: true
+            },
+            notification:{
+                type: Object,
+                notify: true
+            }
+        },
+        ready: function(){
+            if (this.notifyDevice && Notification != null && Notification.permission !== 'granted') {
+                Notification.requestPermission(function (status) {
+                    if (Notification.permission !== status) {
+                        Notification.permission = status;
+                    }
+                });
+            }
+            if(this.autoshow != null && this.autoshow){
+                this.showMessage();
+            }
+        },
+        /**
+         * To set the message and show it.
+         *
+         * @param {message} the message to show.
+         * @return {void} No return parameter.
+         */
+        setMessage: function(message){
+            this.message = message;
+            this.showMessage();
+        },
+        /**
+         * To show the message.
+         *
+         * @return {void} No return parameter.
+         */
+        showMessage: function(){
+            var toggle = this.querySelector("toggle-animation");
+            toggle.show();
+            if(this.notifyDevice && Notification != null){
+                this.notification = new Notification("", {
+                    body: this.message
+                });   
+            }
+        },
+        /**
+         * To hide the message.
+         *
+         * @return {void} No return parameter.
+         */
+        hideMessage: function(event){
+            event.currentTarget.hide();
+        }
+    });
+</script>

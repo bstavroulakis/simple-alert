@@ -1,0 +1,32 @@
+{
+  "name": "simple-alert",
+  "version": "1.0.0",
+  "description": "Alert Messages with Push Notifications",
+  "scripts": {
+  },
+  "files": [
+    "simple-alert.html"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bstavroulakis/simple-alert.git"
+  },
+  "keywords": [
+    "web-components",
+    "web-component",
+    "WebComponents",
+    "alert-element",
+    "push-notifications",
+    "polymer"
+  ],
+  "author": {
+    "name": "bstavroulakis",
+    "email": "bstavroulakis@gmail.com",
+    "web": "http://github.com/bstavroulakis"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bstavroulakis/simple-alert/issues"
+  },
+  "homepage": "https://github.com/bstavroulakis/simple-alert"
+}

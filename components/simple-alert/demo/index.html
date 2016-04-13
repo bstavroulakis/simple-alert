@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+        <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700">
+        <style is="custom-style">
+        :root {
+            --dark-primary-color:       #303F9F;
+            --text-primary-color:       #ffffff;
+             --paper-font-common-base: {
+                font-family: 'Roboto', 'Noto', sans-serif;
+                -webkit-font-smoothing: antialiased;
+            };
+        }
+        </style>
+        <link rel="import" href="../../simple-alert/simple-alert.html">
+    </head>
+    <body>
+        <simple-alert message="Hello"></simple-alert>
+        <script>
+            var alert = document.querySelector("simple-alert");
+            alert.setMessage("Hello");
+        </script>
+    </body>
+</html>
