@@ -1,3 +1,8 @@
+### Status
+[![Build Status](https://travis-ci.org/bstavroulakis/simple-alert.svg?branch=master)](https://travis-ci.org/bstavroulakis/simple-alert)
+
+### General Info `<simple-alert>`
+
 `<simple-alert>` shows an alert on your page and device notification.
 
 To use, insert `<simple-alert>` in the body:
@@ -6,18 +11,33 @@ To use, insert `<simple-alert>` in the body:
       <simple-alert></simple-alert>
 
 Example:
+
+To show the message instantly.
+```
     <body>
       <simple-alert autoshow message="Hello">
       </simple-alert>
-    
-To show the message instantly.
+``` 
+
 
 Example:
+
+To enable push notifications per device.
+
+```
     <body>
       <simple-alert notify-device message="Hello">
       </simple-alert>
-    
-To enable push notifications per device.
+``` 
+
+
+### Documentation Page
+
+http://bstavroulakis.github.io/simple-alert/components/simple-alert/
+
+### Demo Page
+
+http://bstavroulakis.github.io/simple-alert/components/simple-alert/demo/
 
 ### Styling
 The following custom properties and mixins are available for styling:
