@@ -3,7 +3,7 @@
 
 ### General Info `<simple-alert>`
 
-`<simple-alert>` shows an alert on your page and device notification.
+`<simple-alert>` shows an alert on your page and a push notification on your device.
 
 To use, insert `<simple-alert>` in the body:
 
