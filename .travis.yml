@@ -1,19 +1,18 @@
 language: node_js
+sudo: false
 node_js: stable
 addons:
   firefox: latest
-  sauce_connect: true
   apt:
     sources:
     - google-chrome
-    - ubuntu-toolchain-r-test
     packages:
     - google-chrome-stable
-    - g++-4.8
 before_script:
-- npm install -g bower polylint web-component-tester
+- npm install web-component-tester
+- npm install bower
+- export PATH=$PWD/node_modules/.bin:$PATH
 - bower install
-- polylint
 script:
 - xvfb-run wct
 - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then wct -s 'default'; fi
